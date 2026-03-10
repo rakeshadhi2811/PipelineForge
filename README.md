@@ -71,7 +71,9 @@ Example transformation:
 Notebook:
 
 df = pd.read_csv("data.csv")
+
 df = clean(df)
+
 model = train(df)
 
 Becomes
