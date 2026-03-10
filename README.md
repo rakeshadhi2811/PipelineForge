@@ -79,7 +79,9 @@ model = train(df)
 Becomes
 
 def load_data():
+
 def clean_data():
+
 def train_model():
 
 3️⃣ Experiment Structuring Agent
@@ -165,6 +167,7 @@ data quality checks
 Example
 
 test_training.py
+
 test_feature_engineering.py
 
 7️⃣ Documentation Agent
@@ -172,11 +175,17 @@ test_feature_engineering.py
 Creates production documentation automatically:
 
 Experiment Objective
+
 Dataset Used
+
 Features
+
 Hyperparameters
+
 Metrics
+
 Model Version
+
 Observations
 
 This can become RAG knowledge later.
