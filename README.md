@@ -23,6 +23,7 @@ project/
 This structure works anywhere.
 
 Agentic System Architecture
+
 1️⃣ Notebook Understanding Agent
 
 Reads .ipynb / .py
@@ -60,6 +61,7 @@ Train Model
 Evaluate
    ↓
 Save Model
+
 2️⃣ Pipeline Refactoring Agent
 
 Converts notebook cells → modular functions
@@ -77,6 +79,7 @@ Becomes
 def load_data():
 def clean_data():
 def train_model():
+
 3️⃣ Experiment Structuring Agent
 
 Extracts
@@ -104,6 +107,7 @@ experiment:
   metrics:
     accuracy
     recall
+    
 4️⃣ Pipeline Spec Generator Agent
 
 Produces a universal pipeline definition
@@ -160,6 +164,7 @@ Example
 
 test_training.py
 test_feature_engineering.py
+
 7️⃣ Documentation Agent
 
 Creates production documentation automatically:
