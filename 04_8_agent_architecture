@@ -481,3 +481,117 @@ It mimics a **real ML team**:
 
 So your system becomes a **virtual ML team**.
 
+
+Here is a **clean, presentation-ready architecture diagram** for your use case:
+
+**Notebook → Agent → Production ML Pipeline**
+
+This version groups components into **User Layer → Agent Layer → ML Platform Layer → Output**, which is typically how architecture diagrams are shown in solution design documents.
+
+```mermaid
+flowchart LR
+
+%% User Layer
+subgraph User Layer
+A[Data Scientist Notebook]
+end
+
+%% Agent Layer
+subgraph Agent Layer
+B[Notebook Reader Agent]
+C[Code Understanding Agent]
+D[Pipeline Planning Agent]
+E[Code Refactor Agent]
+F[Feature Engineering Agent]
+G[Model Training Agent]
+H[Evaluation Agent]
+I[Packaging Agent]
+end
+
+%% ML Platform Layer
+subgraph ML Platform Services
+J[Dataset Profiler]
+K[Experiment Tracker]
+L[Feature Store]
+M[Model Registry]
+end
+
+%% Output Layer
+subgraph Production Output
+N[Production ML Project]
+O[Training Pipeline]
+P[Model Artifact]
+Q[Inference API]
+end
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+H --> I
+
+F --> L
+G --> K
+G --> M
+H --> K
+C --> J
+
+I --> N
+N --> O
+N --> P
+N --> Q
+```
+
+## How to Read This Diagram
+
+### 1. User Layer
+
+A **data scientist uploads a notebook** containing exploratory ML code.
+
+### 2. Agent Layer
+
+The 8 agents collaborate to industrialize the notebook:
+
+1. **Notebook Reader** – parses `.ipynb`
+2. **Code Understanding** – detects ML workflow
+3. **Pipeline Planner** – designs production pipeline
+4. **Code Refactor** – converts notebook code into modules
+5. **Feature Engineering** – builds standardized feature logic
+6. **Model Training** – trains models
+7. **Evaluation** – computes metrics and validates models
+8. **Packaging** – prepares production artifacts
+
+### 3. ML Platform Services
+
+Agents interact with platform services:
+
+* experiment tracking with MLflow
+* feature storage
+* dataset profiling
+* model registry
+
+### 4. Production Output
+
+The final system generates:
+
+* **training pipeline**
+* **model artifact**
+* **inference API**
+* **production ML project structure**
+
+---
+
+💡 A useful way to pitch this system is:
+
+> “An AI system that converts experimental ML notebooks into production-ready pipelines automatically.”
+
+---
+
+If you want, I can also show you **one very important diagram missing from most agent architectures**:
+
+**“How the Notebook Understanding Engine works internally (AST parsing + dependency graph)”** — this is actually the **hardest technical part of your project and what makes the system intelligent.**
+
+
