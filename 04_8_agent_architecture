@@ -1,5 +1,7 @@
 Alright — let’s design a **serious agentic architecture** for your idea:
 
+https://chatgpt.com/share/69b272d2-aea8-8000-bc93-c11223049202
+
 > **Notebook → Agent → Production ML Pipeline**
 
 The goal is that a messy data-science notebook becomes a **clean production ML project automatically**. The best way to do that is with **specialized agents**, each responsible for one stage of industrialization.
