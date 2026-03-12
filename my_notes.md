@@ -27,3 +27,16 @@ In simple terms, it connects ML steps (data prep, training, deployment) into a r
 **nbdev** is a tool that turns Jupyter notebooks into clean, production-ready Python libraries.
 
 In simple terms, it lets developers write code in notebooks and automatically convert it into structured modules, documentation, and tests
+
+
+
+| Tool             | Main Purpose                                        | Open Source / Proprietary | Pros                                                               | Cons / Limitations                                          | Best Fit Use Case                      | Industry / Real Use                                                 |
+| ---------------- | --------------------------------------------------- | ------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------- |
+| **Ploomber**     | Data pipeline orchestration for notebooks & scripts | Open Source               | Notebook-friendly pipelines, incremental builds, reproducible runs | Smaller ecosystem, limited enterprise orchestration         | Converting ML notebooks into pipelines | Data science teams converting notebooks into production workflows   |
+| **Kedro**        | Structured ML/data project framework                | Open Source               | Strong project structure, data catalog, modular pipelines          | No built-in scheduler/orchestrator; requires external tools | Enterprise ML code organization        | Used by consulting teams and enterprises for production DS projects |
+| **Cookiecutter** | Project template generator                          | Open Source               | Quick standardized project setup, language-agnostic                | Not a pipeline tool; only scaffolding                       | Standardizing project structure        | Dev teams creating consistent repos                                 |
+| **nbdev**        | Notebook-driven software development                | Open Source               | Convert notebooks → Python packages, auto docs/tests               | Not meant for pipelines or orchestration                    | Notebook-first library development     | Used by research teams and ML engineers                             |
+| **ZenML**        | End-to-end MLOps pipeline framework                 | Open Source + Commercial  | Pipeline orchestration, artifact tracking, experiment tracking     | Younger ecosystem, extra infra setup for scale              | Production ML pipelines                | Used by companies like Bosch, Airbus etc. ([ZenML][1])              |
+
+[1]: https://www.zenml.io/compare?utm_source=chatgpt.com "ZenML vs Other Tools"
+
