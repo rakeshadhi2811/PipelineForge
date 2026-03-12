@@ -389,3 +389,118 @@ J --> M[Inference API]
 **LLM is used only for reasoning-heavy steps**, while parsing, classification, and generation rely on deterministic code. This is what reduces cost and improves reliability.
 
 If you'd like, I can also create a **side-by-side architecture diagram comparing “Naive Agent System vs Optimized Agent System”**, which is very useful for presentations or design reviews.
+
+
+
+A side-by-side view makes the difference much clearer. Below is a **comparison flowchart** showing the **Naive Agent Architecture vs the Cost-Optimized Architecture** for your *Notebook → Production ML Pipeline* system.
+
+```mermaid
+flowchart LR
+
+%% NAIVE SYSTEM
+subgraph A["Naive Agent Architecture (High Cost)"]
+A1[Notebook Upload]
+A2[Notebook Reader Agent]
+A3[Code Understanding Agent]
+A4[Pipeline Planner Agent]
+A5[Code Refactor Agent]
+A6[Feature Engineering Agent]
+A7[Training Agent]
+A8[Evaluation Agent]
+A9[Packaging Agent]
+A10[Production ML Pipeline]
+
+A1 --> A2 --> A3 --> A4 --> A5 --> A6 --> A7 --> A8 --> A9 --> A10
+end
+
+
+%% OPTIMIZED SYSTEM
+subgraph B["Optimized Architecture (Low Cost)"]
+B1[Notebook Upload]
+B2[Notebook Parser]
+B3[AST Analyzer]
+B4[Rule Engine]
+B5[Template Code Generator]
+B6[LLM Refactoring Agent]
+B7[Pipeline Builder]
+B8[Validation]
+B9[Production ML Pipeline]
+
+B1 --> B2 --> B3 --> B4
+B4 -->|Simple tasks| B5
+B4 -->|Complex reasoning| B6
+B6 --> B5
+B5 --> B7 --> B8 --> B9
+end
+```
+
+## What This Diagram Shows
+
+### Naive Agent System
+
+Every stage uses LLM-based agents:
+
+Notebook → Agent → Agent → Agent → Agent → Output
+
+Problems:
+
+* Too many LLM calls
+* High token cost
+* Slower execution
+* Harder to debug
+
+Typical usage:
+
+```
+20–30 LLM calls per notebook
+```
+
+---
+
+### Optimized Architecture
+
+Most steps are handled by **deterministic software components**, and the LLM is used **only when reasoning is required**.
+
+Notebook → Parser → AST → Rules → Templates → LLM (only if needed)
+
+Benefits:
+
+* ~80–90% fewer LLM calls
+* Faster execution
+* Lower cost
+* More reliable code generation
+
+Typical usage:
+
+```
+2–4 LLM calls per notebook
+```
+
+---
+
+## Conceptual Difference
+
+| Approach         | Philosophy                             |
+| ---------------- | -------------------------------------- |
+| Naive Agent      | Everything is solved by LLM            |
+| Optimized System | Software first, LLM only for reasoning |
+
+---
+
+## Mental Model
+
+Think of the optimized system like this:
+
+```
+Traditional Software Engine
+           +
+Selective AI Reasoning
+           =
+Efficient Agentic Platform
+```
+
+This is how **most scalable AI engineering systems are designed today**.
+
+---
+
+If you want, I can also show you the **full end-to-end technical architecture (around 12 components)** that companies typically build for a system like this — including **vector memory, notebook dependency graph, experiment tracking, and pipeline orchestration**. That diagram will make your project look like a **complete AI platform design.**
