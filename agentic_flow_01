@@ -1,0 +1,320 @@
+Great idea. Turning your template into an **agentic data science system** means the project will no longer be a fixed pipeline. Instead, **specialized AI agents collaborate to build, validate, train, and package the ML solution automatically**.
+
+Think of the shift like this:
+
+| Traditional DS Pipeline | Agentic DS Pipeline         |
+| ----------------------- | --------------------------- |
+| Static scripts          | Autonomous agents           |
+| Sequential steps        | Decision-making workflow    |
+| Manual debugging        | Self-diagnosing pipeline    |
+| Fixed model training    | Model experimentation agent |
+
+Let’s build a **practical architecture that fits your current template built with** Cookiecutter.
+
+---
+
+# 1. Core Idea of an Agentic Data Science Project
+
+Instead of this:
+
+```
+data → features → train → predict
+```
+
+You create **intelligent agents** that decide what to do.
+
+```
+User Request
+     ↓
+Project Manager Agent
+     ↓
+Data Agent → Feature Agent → Training Agent → Evaluation Agent
+     ↓
+Packaging Agent
+```
+
+Each agent performs a **task + reasoning + validation**.
+
+---
+
+# 2. High-Level Architecture
+
+```
+                    ┌────────────────────┐
+                    │  Orchestrator Agent │
+                    └─────────┬──────────┘
+                              │
+      ┌──────────────┬────────┼──────────┬──────────────┐
+      │              │        │          │              │
+ Data Agent   Feature Agent  Training Agent  Eval Agent  Packaging Agent
+      │              │        │          │              │
+      └──────────────┴────────┴──────────┴──────────────┘
+                       Shared Project Memory
+```
+
+The **orchestrator decides which agent runs next**.
+
+---
+
+# 3. Modify Your Existing Template
+
+Extend your template structure.
+
+```
+project
+│
+├── agents
+│   ├── orchestrator_agent.py
+│   ├── data_agent.py
+│   ├── feature_agent.py
+│   ├── training_agent.py
+│   ├── evaluation_agent.py
+│   └── packaging_agent.py
+│
+├── memory
+│   └── project_state.json
+│
+├── src
+│   ├── data
+│   ├── features
+│   └── models
+│
+└── run_agents.py
+```
+
+---
+
+# 4. Agent Responsibilities
+
+## 1️⃣ Orchestrator Agent
+
+Acts like a **project manager**.
+
+Responsibilities:
+
+* understand task
+* call agents
+* track progress
+* manage failures
+
+Example logic
+
+```python
+class OrchestratorAgent:
+
+    def run(self):
+
+        DataAgent().run()
+
+        FeatureAgent().run()
+
+        TrainingAgent().run()
+
+        EvaluationAgent().run()
+
+        PackagingAgent().run()
+```
+
+Later this becomes **dynamic decision making**.
+
+---
+
+# 5. Data Agent
+
+Responsible for **data understanding and cleaning**.
+
+Tasks
+
+* dataset profiling
+* missing value detection
+* schema validation
+* cleaning suggestions
+
+Output
+
+```
+data/interim/clean_data.parquet
+```
+
+Possible tools
+
+* pandas profiling
+* automated cleaning
+
+---
+
+# 6. Feature Engineering Agent
+
+Responsibilities
+
+* detect categorical columns
+* create transformations
+* feature selection
+* feature importance analysis
+
+Output
+
+```
+data/processed/features.parquet
+```
+
+---
+
+# 7. Training Agent
+
+Responsibilities
+
+* select algorithms
+* hyperparameter tuning
+* training experiments
+
+Example models
+
+* RandomForest
+* XGBoost
+* LightGBM
+
+Output
+
+```
+models/model.pkl
+```
+
+Experiment tracking can use
+
+MLflow.
+
+---
+
+# 8. Evaluation Agent
+
+Responsibilities
+
+* evaluate multiple models
+* compare metrics
+* select best model
+
+Example metrics
+
+* accuracy
+* precision
+* recall
+* ROC-AUC
+
+Output
+
+```
+reports/model_comparison.csv
+```
+
+---
+
+# 9. Packaging Agent
+
+Finalizes the project.
+
+Tasks
+
+* serialize model
+* generate inference script
+* create API
+* package project
+
+Output
+
+```
+deployment/
+model_api.py
+Dockerfile
+```
+
+---
+
+# 10. Shared Memory Layer
+
+Agents need **context sharing**.
+
+Example memory file:
+
+```
+memory/project_state.json
+```
+
+Example content
+
+```json
+{
+  "data_cleaned": true,
+  "features_created": true,
+  "models_trained": ["rf", "xgb"],
+  "best_model": "xgb"
+}
+```
+
+Agents read and update this.
+
+---
+
+# 11. Agent Communication Model
+
+You can implement agents using frameworks like:
+
+| Framework | Use                       |
+| --------- | ------------------------- |
+| LangChain | agent orchestration       |
+| AutoGen   | multi-agent collaboration |
+| CrewAI    | role-based agents         |
+
+For your use case **CrewAI is easiest**.
+
+---
+
+# 12. Example Agent Workflow
+
+```
+User: Build churn prediction model
+          ↓
+Orchestrator Agent
+          ↓
+Data Agent
+  - Clean dataset
+          ↓
+Feature Agent
+  - Build features
+          ↓
+Training Agent
+  - Train models
+          ↓
+Evaluation Agent
+  - Compare metrics
+          ↓
+Packaging Agent
+  - Package model
+```
+
+---
+
+# 13. Make It Even More Powerful
+
+You can add **advanced agents**.
+
+| Agent                   | Role             |
+| ----------------------- | ---------------- |
+| Data Quality Agent      | Detect anomalies |
+| Feature Discovery Agent | Suggest features |
+| Model Selection Agent   | Choose algorithm |
+| Hyperparameter Agent    | Tune parameters  |
+| Documentation Agent     | Generate reports |
+
+Now your system becomes **autonomous ML engineering**.
+
+
+
+# 15. Final Execution Command
+
+The whole project runs with:
+
+```
+python run_agents.py
+```
+
